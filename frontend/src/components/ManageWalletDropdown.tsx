@@ -2,6 +2,7 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import Button from "./ui/Button";
 import { useModalOpenContext } from "../contexts/ModalOpenContext";
 import { useWalletBalanceContext } from '../contexts/WalletBalanceContext';
+import { useState } from 'react';
 
 const ManageWalletDropdown = () => {
   const { publicKey } = useWallet();
@@ -12,6 +13,7 @@ const ManageWalletDropdown = () => {
     setWithdrawModalVisible
   } = useModalOpenContext();
   const { walletBalance, refreshBalance } = useWalletBalanceContext();
+  const [claimableAmount, setClaimableAmount] = useState(0);
 
   const handleDeposit = () => {
     setIsManageWalletDropdownVisible(false);
@@ -21,6 +23,11 @@ const ManageWalletDropdown = () => {
   const handleWithdraw = () => {
     setIsManageWalletDropdownVisible(false);
     setWithdrawModalVisible(true);
+  };
+
+  const handleClaim = () => {
+    console.log('Claiming amount:', claimableAmount);
+    setClaimableAmount(0);
   };
 
   return (
@@ -46,7 +53,12 @@ const ManageWalletDropdown = () => {
                 <p>Balance</p>
                 <p>${walletBalance.toFixed(2)}</p>
               </div>
+              <div className="flex justify-between items-center text-gray-secondary text-base">
+                <p>Claimable Amount</p>
+                <p>${claimableAmount.toFixed(2)}</p>
+              </div>
               <div className="flex gap-2">
+                <Button title="Claim" style="accent" onClick={handleClaim} />
                 <Button title="Withdraw" style="dark" onClick={handleWithdraw} />
                 <Button title="Deposit" style="accent" onClick={handleDeposit} />
               </div>
