@@ -12,7 +12,7 @@ const ManageWalletDropdown = () => {
     setDepositModalVisible,
     setWithdrawModalVisible
   } = useModalOpenContext();
-  const { walletBalance, refreshBalance } = useWalletBalanceContext();
+  const { walletBalance } = useWalletBalanceContext();
   const [claimableAmount, setClaimableAmount] = useState(0);
 
   const handleDeposit = () => {
