@@ -123,6 +123,7 @@ const ManageWalletDropdown = () => {
     } catch (err) {
       console.error("claimUserWinnings failed", err);
     } finally {
+      console.log('not found')
     }
   };
 

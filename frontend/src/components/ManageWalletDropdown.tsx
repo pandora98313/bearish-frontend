@@ -53,10 +53,10 @@ const ManageWalletDropdown = () => {
                 <p>Balance</p>
                 <p>${walletBalance.toFixed(2)}</p>
               </div>
-              <div className="flex justify-between items-center text-gray-secondary text-base">
+              {/* <div className="flex justify-between items-center text-gray-secondary text-base">
                 <p>Claimable Amount</p>
                 <p>${claimableAmount.toFixed(2)}</p>
-              </div>
+              </div> */}
               <div className="flex gap-2">
                 <Button title="Claim" style="accent" onClick={handleClaim} />
                 <Button title="Withdraw" style="dark" onClick={handleWithdraw} />
